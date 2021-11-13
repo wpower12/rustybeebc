@@ -21,34 +21,34 @@ pub struct EBC { // Full state of the machine, besides ram.
 // Skips the first 2 fetch steps, hard-coded in decode_instruction.
 const UC: [[u16; 6]; 16] = [
     [0,0,0,0,0,0], // No-op
-    [signal::IO | signal::MI,      // LDA
+    [signal::IO | signal::MI, // LDA
      signal::RO | signal::AI,
      0,0,0,0], 
-    [signal::IO | signal::MI,      // ADD
+    [signal::IO | signal::MI, // ADD
      signal::RO | signal::BI,
      signal::EO | signal::AI | signal::FI,
      0,0,0],
-    [signal::IO | signal::MI,      // SUB
+    [signal::IO | signal::MI, // SUB
      signal::RO | signal::BI,
      signal::EO | signal::AI | signal::SU | signal::FI,
      0,0,0],
-    [signal::IO | signal::MI,      // STA
+    [signal::IO | signal::MI, // STA
      signal::AO | signal::RI,
      0,0,0,0],
-    [signal::IO | signal::AI,      // LDI
+    [signal::IO | signal::AI, // LDI
      0,0,0,0,0],
-    [signal::IO | signal::J_,      // JMP
+    [signal::IO | signal::J_, // JMP
      0,0,0,0,0],
-    [0,0,0,0,0,0], // JC - Handled Later
-    [0,0,0,0,0,0], // JZ - ^
+    [0,0,0,0,0,0],            // JC - Handled Later
+    [0,0,0,0,0,0],            // JZ - ^
     [0,0,0,0,0,0], // NOP 
     [0,0,0,0,0,0], // NOP
     [0,0,0,0,0,0], // NOP
     [0,0,0,0,0,0], // NOP
     [0,0,0,0,0,0], // NOP
-    [signal::AO | signal::OI,      // OUT
+    [signal::AO | signal::OI, // OUT
      0,0,0,0,0], 
-    [signal::HLT,          // HLT
+    [signal::HLT,             // HLT
      0,0,0,0,0]
 ];
 
@@ -83,7 +83,7 @@ pub fn update_modules(ebc: &mut EBC, cw: u16, mut ram: [u8; 16]){
     if (cw & signal::AO) > 0 { // A Register Out.
         ebc.bus = ebc.reg_a;
     }
-    if (cw & signal::CO) > 0 { // A Register Out.
+    if (cw & signal::CO) > 0 { // PC Register Out.
         ebc.bus = ebc.pc;
     }
 
@@ -102,7 +102,7 @@ pub fn update_modules(ebc: &mut EBC, cw: u16, mut ram: [u8; 16]){
 
     if (cw & signal::FI) > 0  { // ALU Flags In
         ebc.reg_flgs = 0;
-        if over_flowed { ebc.reg_flgs = signal::CF; }
+        if over_flowed      { ebc.reg_flgs = signal::CF; }
         if ebc.reg_alu == 0 { ebc.reg_flgs = signal::ZF; }
     }
 
