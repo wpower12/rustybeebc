@@ -36,3 +36,8 @@ I want to get this to a place where I can share it, so I should be specific abou
  Also, I have a feeling a control word itself should be a struct, that is composed out of signals. I should be able to make a struct like that? idk. 
 
  That's def the next big step. For now it can stay until I learn more rust while building out a ui. 
+
+ ## Broke Out Signals
+ I put the signals and opcodes in their own files to clean things up. Now i can keep them straight by their namespace. Probably still a better way, but this feels cleaner than before. 
+
+The example usage, with those changes, is now in `doc/examples/02_draft_module_test.rs`.
