@@ -26,3 +26,13 @@ I want to get this to a place where I can share it, so I should be specific abou
  This draft is now saved to `doc/examples/01_draft_emulator.rs`.
 
  Now to work on wrapping it in a module? Get to learn that?
+
+ ## Module Working
+ I have a module made up. The imports were super easy to figure out. Rust is awesome. 
+
+ ## Code Smells
+ I would like to make enums or structs that actually can be called like Sig.HLT, Sig.CE etc... Not sure what the rustiest way to do that is. 
+
+ Also, I have a feeling a control word itself should be a struct, that is composed out of signals. I should be able to make a struct like that? idk. 
+
+ That's def the next big step. For now it can stay until I learn more rust while building out a ui. 
