@@ -94,16 +94,18 @@ pub fn update_modules(ebc: &mut EBC, cw: u16, mut ram: [u8; 16]){
     } else {
         result = ebc.reg_a.checked_add(ebc.reg_b);
     }
-    let mut over_flowed = false;
     match result {
-        Some(val) => ebc.reg_alu = val,
-        None      => over_flowed = true
-    }
-
-    if (cw & signal::FI) > 0  { // ALU Flags In
-        ebc.reg_flgs = 0;
-        if over_flowed      { ebc.reg_flgs = signal::CF; }
-        if ebc.reg_alu == 0 { ebc.reg_flgs = signal::ZF; }
+        Some(val) => {
+            ebc.reg_alu = val;
+            if (cw & signal::FI) > 0 && val == 0 {
+                ebc.reg_flgs = signal::ZF;
+            }
+        },
+        None => {
+            if (cw & signal::FI) > 0 {
+                ebc.reg_flgs = signal::CF;
+            }
+        }
     }
 
     if (cw & signal::EO) > 0 {
