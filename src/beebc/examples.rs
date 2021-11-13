@@ -1,5 +1,5 @@
 // Test Program - Add To 42 
-pub const Add42: [u8; 16] = [
+pub const ADD42: [u8; 16] = [
     0b00010100, // LDA [4] - Load from memory at 4
     0b00100101, // ADD [5] - Load from memory at 5 into B, put A+B in A
     0b11100000, // OUT     - Put A in OR, and Display
@@ -18,7 +18,7 @@ pub const Add42: [u8; 16] = [
     0b00000000];//
 
 // Test Program - Subtract 2 values.
-pub const Sub14: [u8; 16] = [ 
+pub const SUB14: [u8; 16] = [ 
     0b00010101, // LDA [4] - Load from memory at 5
     0b00110100, // SUB [5] - Load from memory at 4 into B, put A-B in A
     0b11100000, // OUT     - Put A in OR, and Display
@@ -37,7 +37,7 @@ pub const Sub14: [u8; 16] = [
     0b00000000];//
 
 // Test Program - Repeat: Add up till CF, Sub down till CF.
-pub const AddSubLoop: [u8; 16] = [ 
+pub const ADD_SUB_LOOP: [u8; 16] = [ 
     0b11100000, // [00] OUT
     0b00101000, // [01] ADD 8
     0b01110100, // [02] JC  4

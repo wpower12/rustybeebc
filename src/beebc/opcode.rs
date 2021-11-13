@@ -1,0 +1,11 @@
+pub const NOP: u8 = 0b0000; 
+pub const LDA: u8 = 0b0001; 
+pub const ADD: u8 = 0b0010;
+pub const SUB: u8 = 0b0011;
+pub const STA: u8 = 0b0100;
+pub const LDI: u8 = 0b0101;
+pub const JMP: u8 = 0b0110;
+pub const JC : u8 = 0b0111; 
+pub const JZ : u8 = 0b1000;
+pub const OUT: u8 = 0b1110;
+pub const HLT: u8 = 0b1111; 
