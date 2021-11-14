@@ -1,6 +1,7 @@
 pub mod examples;
 pub mod signal;
 pub mod opcode;
+pub mod asm;
 
 #[derive(Default, Debug)]
 pub struct EBC { // Full state of the machine, besides ram.

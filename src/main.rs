@@ -3,9 +3,9 @@ mod beebc;
 
 fn main() {
     let mut ebc = beebc::EBC::default();
-    // let ram = beebc::examples::ADD42;
+    let ram = beebc::examples::ADD42;
     // let ram = beebc::examples::SUB14;
-    let ram = beebc::examples::ADD_SUB_LOOP;
+    // let ram = beebc::examples::ADD_SUB_LOOP;
 
     while !ebc.hlt {
         let new_cw = beebc::decode_instruction(&mut ebc);
