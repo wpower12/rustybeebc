@@ -1,6 +1,8 @@
 # rustybeebc
 Rust implementation of an emulator for the Simple-As-Possible 8 bit computer, as made famous by [You-Tuber Ben Eater](https://eater.net/8bit/).
 
+![gui mode](doc/gui_mode.png)
+
 ## Install
 The crate contains two binaries; `beebasm` and `beebc`. The first is an assembler that converts a very simple assembly language into machine code, which can be run by the second program, the actual emulator. To 'install' clone, and then build the project with cargo. 
 
@@ -9,13 +11,20 @@ The crate contains two binaries; `beebasm` and `beebc`. The first is an assemble
 ```bash
 // Running with cargo
 > cargo run --bin beebasm addsub.ebc addsub
-> cargo run --bin beebc addsub.o
+> cargo run --bin beebc addsub
 ```
 
 The example script should already be in the project root directory, so the above should run. 
 
 Note; I don't understand enough about the rust file io to know whats going wrong, but there's an issue with passing output file names to the assembler that contain file extensions. So for now, just don't use one? It's fine reading them in, but not writing to them? More to learn!
 
+To run with the gui enabled, add the `-g` flag:
+
+```bash
+> cargo run --bin beebc addsub -g
+```
+
+In gui mode, use `p` to pause the emulator, `s` to step the clock, and `q` to quit. 
 
 ## BEEB Assembly Language
 The assembly language is very simple. It only recognizes the set of opcodes and integer literals. Any other encountered strings are treated as symbols to be resolved by the symbol table.
