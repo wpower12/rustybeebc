@@ -5,3 +5,5 @@ edition = "2021"
 
 [dependencies]
 clap = "2.33.2"
+tui = "0.16"
+termion = "1.5"

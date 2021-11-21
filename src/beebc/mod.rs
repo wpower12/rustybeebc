@@ -2,6 +2,7 @@ pub mod examples;
 pub mod signal;
 pub mod opcode;
 pub mod asm;
+pub mod gui;
 
 #[derive(Default, Debug)]
 pub struct EBC { // Full state of the machine, besides ram.
@@ -54,7 +55,7 @@ const UC: [[u16; 6]; 16] = [
 ];
 
 // The current state of a machine maps to a new control word. 
-pub fn decode_instruction(ebc: &mut EBC) -> u16 {
+pub fn decode_instruction(ebc: & EBC) -> u16 {
 	// Hardcode Fetch steps.
     if ebc.sc == 0 { return signal::MI | signal::CO; }      
     if ebc.sc == 1 { return signal::RO | signal::II | signal::CE; }
@@ -69,6 +70,7 @@ pub fn decode_instruction(ebc: &mut EBC) -> u16 {
     }
     // Otherwise, index into microcode to find the new CW
     // Note - offset the step counter by 2, b/c 0 & 1 are hardcoded
+    // ~ Represents the call into the ROM chip. 
     return UC[op_code as usize][(ebc.sc-2) as usize];
 }
 
